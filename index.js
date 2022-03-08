@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 require("dotenv").config();
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 const { PORT, EMAIL, PASS } = process.env;
 
@@ -23,7 +23,7 @@ app.post("/:email/:body", (req, res) => {
         date.getMinutes() +
         ":" +
         date.getSeconds();
-    var transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
             user: EMAIL,
@@ -31,7 +31,7 @@ app.post("/:email/:body", (req, res) => {
         },
     });
 
-    var mailOptions = {
+    const mailOptions = {
         from: EMAIL,
         to: EMAIL,
         subject: "Email from" + emailSend,
